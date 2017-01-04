@@ -1,0 +1,55 @@
+<ion-view view-title="Print">
+  <ion-content>
+    <h1>Print content:</h1>
+    <div id="printContent">
+<pos>
+<h1>
+Daňový doklad<br />
+Dodací list
+</h1><br />
+<center>Logo</center><br />
+<h2>INITED Solutions, s.r.o.</h2><br />
+Hlavní 49,   252 43 Průhonice<br />
+IČ: 2425 3294     DIČ: CZ2425 3294<br />
+Zapsáno v OR u MS v Praze,oddíl C,vložka 197457<br />
+<br />
+DUZP:                                 {{print.today | date:'dd.MM.yyyy'}}<br />
+Úhrada dokladu:                      v hotovosti<br />
+<br />
+<b>KUPUJÍCÍ:</b><br />
+<h2>Odběratel a.s.</h2><br />
+Na Pankráci 77<br />
+IČ: 11112222     DIČ: 1223432356<br />
+<u>                                                </u><br />
+Kód   Popis                    DPH       Cena<br />
+<i>                                         bez DPH</i><br />
+<div>
+{{'12345' | setLength:6:1}}{{'Položka v košíku' | setLength:24:1}} {{'21%' | setLength:3:2}}%{{'8000' | currency:'Kč':2 | setLength:13:2}}<br />
+</div>
+<u>
+CELKEM bez DPH                      {{'8000' | currency:'Kč':2 | setLength:12:2}}
+</u><br />
+<br />
+<b>Vyčíslení DPH v Kč</b><br />
+<u>
+Sazba                Základ                  DPH
+</u><br />
+ 0%            {{'0'    | currency:'Kč':2 | setLength:12:2}}              0.00 Kč<br />
+15%            {{'0' | currency:'Kč':2 | setLength:12:2}}         {{'0' | currency:'Kč':2 | setLength:12:2}}<br />
+<u>
+21%            {{'8000' | currency:'Kč':2 | setLength:12:2}}         {{'1680' | currency:'Kč':2 | setLength:12:2}}</u><br />
+<b>
+CELKEM s DPH                   {{'9680' | currency:'Kč':2 | setLength:17:2}}
+</b><br />
+<br />
+<b>
+Placeno v hotovosti            {{'9680' | currency:'Kč':0  | setLength:17:2}}
+</b><br />
+<br />
+<small ng-bind-html="'Zbozi zkontrolujte ihned po prevzeti, pozdejsi pripominky ke stavu predavaneho zbozi mohou byt zamitnuty.Podminky zaruky a dalsi informace naleznete na'|wrap:69"></small><br />
+<center>Inited Solutions</center><br /><br /><br /><br />
+</pos>
+    </div>
+    <button class="button button-positive" ng-click="print.print()">Vytisknout zkušení stranu</button>
+  </ion-content>
+</ion-view>

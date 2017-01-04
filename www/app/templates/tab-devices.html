@@ -1,0 +1,22 @@
+<ion-view view-title="Devices">
+  <ion-content class="padding">
+    <div class="list" ng-if="devices.devices.length > 0 && devices.disabled == false">
+      <div class="item item-button-right" ng-repeat="device in devices.devices">
+        {{device.name}}
+        <button class="button button-positive" ng-if="devices.connecting.address != device.address && devices.connected.address != device.address" ng-click="devices.connect(device)">
+          <i class="icon ion-android-contract"></i>
+        </button>
+        <ion-spinner ng-if="devices.connecting.address == device.address && devices.connected.address != device.address"></ion-spinner>
+        <button class="button button-assertive" ng-if="devices.connected.address == device.address" ng-click="devices.disconnect(device)">
+          <i class="icon ion-android-cancel"></i>
+        </button>
+      </div>
+    </div>
+    <h3 class="text-center" ng-if="devices.devices.length == 0 && devices.disabled == false">Žádná zařízení nebyla nalezena</h3>
+    <p class="text-center" ng-if="devices.initializing == true && devices.disabled == false">
+      Vyhledávám zařízení...<br>
+      <ion-spinner></ion-spinner>
+    </p>
+    <h3 class="text-center" ng-if="devices.disabled == true">Bluetooth není povoleno, aplikace nemůže fungovat</h3>
+  </ion-content>
+</ion-view>
